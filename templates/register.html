@@ -1,0 +1,36 @@
+<legend> Register </legend>
+<div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+</div>
+<div>
+    <label for="pass">Password (8 characters minimum):</label>
+    <input type="password" id="pass" name="password"
+           minlength="8" required>
+</div>
+<div>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email">
+</div>
+<button onclick="posting()"> Tạo tài khoản </button>
+<script>
+    function posting() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("pass").value;
+        var email = document.getElementById("email").value;
+        var data = {
+            "username" : username,
+            "password" : password,
+            "email" : email
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                alert(xhr.responseText);
+            }
+        }
+        xhr.open("POST", "/register");
+        xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+        xhr.send(JSON.stringify(data));
+    }
+</script>

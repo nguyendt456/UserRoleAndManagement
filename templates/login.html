@@ -1,0 +1,39 @@
+<meta charset = "UTF-8"> 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<legend> Login </legend>
+<div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+</div>
+
+<div>
+    <label for="pass">Password (8 characters minimum):</label>
+    <input type="password" id="pass" name="password"
+           minlength="8" required>
+</div>
+
+<button onclick="posting()"> Dang Nhap </button>
+<script>
+    function posting() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("pass").value;
+        var jsons = {
+            "username" : username,
+            "password" : password
+        }
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                if(xmlhttp.responseText == "Logged In") {
+                    xmlhttp.open("GET", "/", true);
+                    xmlhttp.send();
+                }
+            }
+        }
+        var theUrl = "/";
+        xmlhttp.open("POST", theUrl);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(JSON.stringify(jsons));
+    }
+</script>
