@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, Response, url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user, login_user, logout_user, UserMixin
+from flask_user import roles_required
 from sqlalchemy.exc import IntegrityError
 import json 
 
@@ -8,7 +9,7 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 app.config['SECRET_KEY'] = "phuongquyen"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['DEBUG'] = True
 
 class User(db.Model, UserMixin):
@@ -16,13 +17,24 @@ class User(db.Model, UserMixin):
         self.username = user['username']
         self.password = user['password']
         self.email = user['email']
-    __tablename__ = 'userdata'
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(80), unique = True, nullable = False)
     password = db.Column(db.String(120), unique = False, nullable = False)
-    email = db.Column(db.String(120), unique = False, nullable = True)
+    email = db.Column(db.String(120), nullable = False)
+    role = db.relationship('Role', secondary = 'user_role', backref = db.backref('roler',lazy = 'dynamic'))
+
+class Role(db.Model):
+    __tablename__ = 'roles'
+    id = db.Column(db.Integer(), primary_key = True)
+    name = db.Column(db.String(20), unique = True)
+
+class UserRole(db.Model):
+    __tablename__ = 'user_role'
+    user_id = db.Column(db.Integer(),db.ForeignKey('users.id'))
+    role_id = db.Column(db.Integer(),db.ForeignKey('roles.id'))
 db.create_all()
-db.session.commit()
+
 @login_manager.user_loader
 def load_user(user_id):
     usid = User.query.get(user_id)
