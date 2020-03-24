@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, Response, url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user, login_user, logout_user, UserMixin
-from flask_user import roles_required
 from sqlalchemy.exc import IntegrityError
 import json 
 
@@ -31,9 +30,9 @@ class Role(db.Model):
 
 class UserRole(db.Model):
     __tablename__ = 'user_role'
+    id = db.Column(db.Integer(), primary_key = True)
     user_id = db.Column(db.Integer(),db.ForeignKey('users.id'))
     role_id = db.Column(db.Integer(),db.ForeignKey('roles.id'))
-db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -65,8 +64,11 @@ def index():
 def reg():
     if request.is_json:
         try:
-            regdata = User(request.get_json())
+            newuser = request.get_json()
+            regdata = User(newuser)
             db.session.add(regdata)
+            role = Role.query.filter_by(name = newuser['role']).first()
+            role.roler.append(regdata)
             db.session.commit()
             return Response("Account added !",200)
         except IntegrityError:

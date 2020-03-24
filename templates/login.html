@@ -26,8 +26,7 @@
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) {
                 if(xmlhttp.responseText == "Logged In") {
-                    xmlhttp.open("GET", "/", true);
-                    xmlhttp.send();
+                    localtion.reload();
                 }
             }
         }

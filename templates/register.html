@@ -12,16 +12,25 @@
     <label for="email">Email</label>
     <input type="text" id="email" name="email">
 </div>
+<label for="role"> Role: </label>
+<select id="role">
+    <option value="admin"> Admin </option>
+    <option value="staff"> Staff </option>
+    <option selected value="guest"> Guest </option>
+</select>
+<br><br>
 <button onclick="posting()"> Tạo tài khoản </button>
 <script>
     function posting() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("pass").value;
         var email = document.getElementById("email").value;
+        var role = document.getElementById("role").value;
         var data = {
             "username" : username,
             "password" : password,
-            "email" : email
+            "email" : email,
+            "role" : role
         }
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
