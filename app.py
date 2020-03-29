@@ -7,7 +7,7 @@ import json
 app = Flask(__name__, static_url_path='/static')
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
-app.config['SECRET_KEY'] = "phuongquyen"
+app.config['SECRET_KEY'] = "friendzone:))"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['DEBUG'] = True
 
