@@ -43,8 +43,7 @@ def load_user(user_id):
 @app.route("/",methods = ['GET','POST'])
 def index():
     if current_user.is_authenticated:
-        print("ok")
-        return render_template("index.html")
+        return render_template("index.html", users = User.query.all())
     else:
         if request.is_json:
             userinp = request.get_json()
@@ -82,5 +81,5 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 if __name__ == "__main__":
-    app.run("0.0.0.0",120)
+    app.run("0.0.0.0",80)
 
