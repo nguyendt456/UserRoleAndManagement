@@ -1,19 +1,40 @@
-Logged In!!
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<legend> User List </legend> <br>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-2"> Username </div>
-        <div class="col-sm-2"> Email </div>
-        <div class="col-sm-2"> Role </div>
-    </div>
-    {% for user in users %}
-    <div class="row">
-        <div class="col-sm-2">{{user.username}}</div>
-        <div class="col-sm-2">{{user.email}}</div>
-        <div class="col-sm-2">{{user.role[0].name}}</div>
-    </div>
-    {% endfor %}
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link href="/static/index.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="full-width">
+            <table class="user-table">
+                <caption class="user-table__caption">
+                    User List
+                </caption>
+                <thead class="user-table__header">
+                    <tr class="user-table__header__row">
+                        <th class="user-table__header__title">User name</th>
+                        <th class="user-table__header__title">Email</th>
+                        <th class="user-table__header__title">Role</th>
+                    </tr>
+                </thead>
+                <tbody class="bodyuser-table__body">
+                    {% for user in users %}
+                    <tr class="user-table__body__row">
+                        <td class="user-table__body__data">
+                            {{user.username}}
+                        </td>
+                        <td class="user-table__body__data">
+                            {{user.email}}
+                        </td>
+                        <td class="user-table__body__data">
+                            {{user.role[0].name}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

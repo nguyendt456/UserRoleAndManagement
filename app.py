@@ -4,7 +4,7 @@ from flask_login import LoginManager, current_user, login_user, logout_user, Use
 from sqlalchemy.exc import IntegrityError
 import json 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 app.config['SECRET_KEY'] = "phuongquyen"
