@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link href="./index.css" type="text/css" rel="stylesheet" />
+        <link href="/static/index.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <div class="full-width">
@@ -20,33 +20,19 @@
                     </tr>
                 </thead>
                 <tbody class="bodyuser-table__body">
+                    {% for user in users %}
                     <tr class="user-table__body__row">
                         <td class="user-table__body__data">
-                            LeNguyenHoangNhan
+                            {{user.username}}
                         </td>
                         <td class="user-table__body__data">
-                            public.hoangnhanlenguyen@gmail.com
+                            {{user.email}}
                         </td>
-                        <td class="user-table__body__data">Developer</td>
+                        <td class="user-table__body__data">
+                            {{user.role[0].name}}
+                        </td>
                     </tr>
-                    <tr class="user-table__body__row">
-                        <td class="user-table__body__data">
-                            LeNguyenHoangNhan
-                        </td>
-                        <td class="user-table__body__data">
-                            public.hoangnhanlenguyen@gmail.com
-                        </td>
-                        <td class="user-table__body__data">Developer</td>
-                    </tr>
-                    <tr class="user-table__body__row">
-                        <td class="user-table__body__data">
-                            LeNguyenHoangNhan
-                        </td>
-                        <td class="user-table__body__data">
-                            public.hoangnhanlenguyen@gmail.com
-                        </td>
-                        <td class="user-table__body__data">Developer</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

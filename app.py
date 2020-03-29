@@ -4,7 +4,7 @@ from flask_login import LoginManager, current_user, login_user, logout_user, Use
 from sqlalchemy.exc import IntegrityError
 import json 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 app.config['SECRET_KEY'] = "phuongquyen"
@@ -43,8 +43,7 @@ def load_user(user_id):
 @app.route("/",methods = ['GET','POST'])
 def index():
     if current_user.is_authenticated:
-        print("ok")
-        return render_template("index.html")
+        return render_template("index.html", users = User.query.all())
     else:
         if request.is_json:
             userinp = request.get_json()
