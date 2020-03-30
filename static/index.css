@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
 html,
 body {
     margin: 0;
@@ -33,21 +34,32 @@ body {
 .user-table__header__title {
     padding-bottom: 1rem;
     text-transform: uppercase;
-    font-family: Montserrat;
-    font-weight: 400;
+    font-family: Lato;
+    font-weight: 600;
     text-align: left;
     text-decoration: none;
+    font-size: 1.05rem;
 }
-.user-table__body__data,
-.user-table__header__title {
+.user-table__body__data {
     padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.user-table__header__title {
+    padding: 0 1rem 1rem 1rem;
+}
+.user-table__body__data {
+    font-family: Lato;
+    font-weight: 400;
+    color: #303030;
+    font-size: 1rem;
 }
 .user-table__caption {
     text-transform: uppercase;
     font-weight: 600;
     font-family: Montserrat;
     font-size: 1.25rem;
-    padding: 1rem 2rem 2rem 2rem;
+    padding: 1rem 2rem 2rem 1rem;
+    text-align: left;
 }
 @media screen and (min-width: 720px) {
     .full-width {
