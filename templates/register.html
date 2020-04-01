@@ -8,8 +8,17 @@
     </head>
     <body>
         <div class="form-warpper">
-            <form id="login-form" method="POST" action="{{url_for(reg)}}">
+
+            <form id="login-form" method="POST">
                 <h1 class="form-header">Register</h1>
+                <!-- <div class="form-error">
+                    <p class="form-error__items">
+                        <i class="material-icons  md-18">report_problem</i>
+                        Email not available
+                    </p>
+   
+                </div> -->
+
                 <input
                     type="text"
                     class="login-form__input"
@@ -47,6 +56,9 @@
                     id="role"
                     class="login-form__input login-form__select"
                     form="login-form"
+
+                    name="role"
+
                     required
                 >
                     <option value="">Your role</option>
@@ -62,4 +74,5 @@
         </div>
     </body>
 </html>
+
 
