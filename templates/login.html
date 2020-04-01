@@ -1,38 +1,35 @@
-<meta charset = "UTF-8"> 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<legend> Login </legend>
-<div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-</div>
-
-<div>
-    <label for="pass">Password (8 characters minimum):</label>
-    <input type="password" id="pass" name="password"
-           minlength="8" required>
-</div>
-
-<button onclick="posting()"> Dang Nhap </button>
-<script>
-    function posting() {
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("pass").value;
-        var jsons = {
-            "username" : username,
-            "password" : password
-        }
-        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                if(xmlhttp.responseText == "Logged In") {
-                    localtion.reload();
-                }
-            }
-        }
-        var theUrl = "/";
-        xmlhttp.open("POST", theUrl);
-        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xmlhttp.send(JSON.stringify(jsons));
-    }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="../static/login.css" type="text/css" />
+    </head>
+    <body>
+        <div class="form-warpper">
+            <form id="login-form" method="POST">
+                <h1 class="form-header">Login</h1>
+                <input
+                    type="email"
+                    class="login-form__input"
+                    placeholder="Email"
+                    name="email"
+                    required
+                />
+                <input
+                    type="password"
+                    class="login-form__input"
+                    placeholder="Password"
+                    name="password"
+                    required
+                />
+                <label class="login-form__input login-form__remeber">
+                    <input type="checkbox" checked="checked" name="remember" />
+                    Remember me
+                </label>
+                <button type="submit" class="login-form__submit">Login</button>
+            </form>
+        </div>
+    </body>
+</html>
