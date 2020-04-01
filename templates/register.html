@@ -1,4 +1,5 @@
 <legend> Register </legend>
+<link href="/static/index.css" type="text/css" rel="stylesheet" />
 <div>
     <label for="username">Username:</label>
     <input type="text" id="username" name="username">
@@ -33,13 +34,9 @@
             "role" : role
         }
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                alert(xhr.responseText);
-            }
-        }
         xhr.open("POST", "/register");
         xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
         xhr.send(JSON.stringify(data));
+        window.location.reload()
     }
 </script>
