@@ -1,11 +1,24 @@
 from init import db, login_manager, app
 from models import User, UserRole, Role
-from forms import RegistrationForm
 from flask import Flask, render_template, request, Response, url_for,redirect
 from flask_login import current_user, login_user, logout_user
 from sqlalchemy.exc import IntegrityError
+from string import ascii_letters, digits
 import json
 
+def Validate(form):
+    error = []
+    if (set(form['username']).difference(ascii_letters + digits)):
+        error.append('Username must not contain special characters!')
+    if (len(form['username']) <= 4 and len(form['username']) >= 20):
+        error.append('Username must from 5 to 19 character!')
+    if (len(form['password']) <= 4 and len(form['password']) >= 20):
+        error.append('Password must from 5 to 19 character!')
+    try:
+        form['email'].index('@')
+    except:
+        error.append('Please enter valid email address!')
+    return error
 @login_manager.user_loader
 def load_user(user_id):
     usid = User.query.get(user_id)
@@ -15,33 +28,35 @@ def load_user(user_id):
 @app.route("/",methods = ['GET','POST'])
 def index():
     if current_user.is_authenticated:
+        print("ok")
         return render_template("index.html", users = User.query.all())
-    else:
-        if request.is_json:
-            userinp = request.get_json()
-            userdata = User.query.filter_by(username = userinp['username']).first()
-            if userdata != None:
-                if userinp['password'] == userdata.password:
-                    login_user(userdata)
-                    return Response("Logged In",200)
-                else:
-                    return Response("Wrong password",200)
+    elif (bool(request.form.to_dict()) == True):
+        user = request.form
+        userfromdatabase = User.query.filter_by(username = user['username']).first()
+        if userfromdatabase != None:
+            if user['password'] == userfromdatabase.password:
+                login_user(userfromdatabase)
+                return redirect(url_for('index'))
             else:
-                return Response("Wrong username !",200)
-        else:
-            return render_template("login.html")
+                return redirect(url_for('index'))
+        return redirect(url_for('index'))
+    return render_template('login.html')
 
 @app.route("/register", methods = ['GET','POST'])
 def reg():
-    form = RegistrationForm(request.form)
-    if form.validate_on_submit():
-        user = User(username = form.username.data, password = form.password.data, email = form.email.data)
-        role = Role.query.filter_by(name = form.role.data).first()
-        role.roler.append(user)
-        db.session.add(user)
-        db.session.commit()
-        return flash(u'Acount Added')
-    return render_template('register.html')
+    error = []
+    form = request.form
+    if bool(form.to_dict()) == True: 
+        error = Validate(form)
+        if error == []:
+            user = User(username = form['username'], password = form['password'], email = form['email'])
+            print(form.to_dict())
+            role = Role.query.filter_by(name = form.get('role')).first()
+            role.roler.append(user)
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for('index'))
+    return render_template('register.html', errors = error)
         
 @app.route("/logout")
 def logout():
