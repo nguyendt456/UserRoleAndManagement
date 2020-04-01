@@ -1,42 +1,65 @@
-<legend> Register </legend>
-<link href="/static/index.css" type="text/css" rel="stylesheet" />
-<div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-</div>
-<div>
-    <label for="pass">Password (8 characters minimum):</label>
-    <input type="password" id="pass" name="password"
-           minlength="8" required>
-</div>
-<div>
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email">
-</div>
-<label for="role"> Role: </label>
-<select id="role">
-    <option value="admin"> Admin </option>
-    <option value="staff"> Staff </option>
-    <option selected value="guest"> Guest </option>
-</select>
-<br><br>
-<button onclick="posting()"> Tạo tài khoản </button>
-<script>
-    function posting() {
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("pass").value;
-        var email = document.getElementById("email").value;
-        var role = document.getElementById("role").value;
-        var data = {
-            "username" : username,
-            "password" : password,
-            "email" : email,
-            "role" : role
-        }
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/register");
-        xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
-        xhr.send(JSON.stringify(data));
-        window.location.reload()
-    }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="../static/login.css" type="text/css" />
+    </head>
+    <body>
+        <div class="form-warpper">
+            <form id="login-form" method="POST" action="{{url_for(reg)}}">
+                <h1 class="form-header">Register</h1>
+                <input
+                    type="text"
+                    class="login-form__input"
+                    placeholder="Username"
+                    name="username"
+                    required
+                />
+                <input
+                    type="text"
+                    class="login-form__input"
+                    placeholder="Email"
+                    name="email"
+                    required
+                    pattern="[^]+@[^]+[.][a-z]{2,63}$"
+                    autocomplete="email"
+                    data-error="Please use a valid email address."
+                    data-empty="Please fill out this field"
+                />
+                <input
+                    type="password"
+                    class="login-form__input"
+                    placeholder="Password"
+                    name="password"
+                    required
+                />
+                <input
+                    type="password"
+                    class="login-form__input"
+                    placeholder="Confirm Password"
+                    name="password2"
+                    required
+                />
+
+                <select
+                    id="role"
+                    class="login-form__input login-form__select"
+                    form="login-form"
+                    required
+                >
+                    <option value="">Your role</option>
+                    <option value="guest">Guest</option>
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                </select>
+
+                <button type="submit" class="login-form__submit">
+                    Register
+                </button>
+            </form>
+        </div>
+    </body>
+</html>
+
