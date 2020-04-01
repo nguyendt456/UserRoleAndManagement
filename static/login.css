@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 html,
 body {
@@ -77,6 +78,8 @@ body {
 
 .login-form__remeber {
     font-weight: normal;
+    height: unset;
+    padding-bottom: 10px;
 }
 .login-form__submit,
 .login-form__remeber {
