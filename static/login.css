@@ -99,6 +99,21 @@ body {
 .login-form__select:hover {
     border-color: #888;
 }
+.form-error__items {
+    color: red;
+}
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+}
+.form-error {
+    width: 50%;
+    margin: 10px auto 10px auto;
+    border: 2px solid red;
+    border-radius: 0.25rem;
+    padding: 0 0.5rem 0 0.5rem;
+    color: red;
+}
 
 @media screen and (max-width: 480px) {
     .form-warpper {
