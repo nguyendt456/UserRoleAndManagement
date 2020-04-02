@@ -1,73 +1,151 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
-html,
 body {
-    margin: 0;
-    background: #ee0979; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-        to right,
-        #ff6a00,
-        #ee0979
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-        to right,
-        #ff6a00,
-        #ee0979
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0; /* overwrite default margin set by browser */
 }
 
-.full-width {
-    width: 95vw;
-    overflow: auto;
-    margin: 1rem auto;
-    background-color: #fdfdfd;
-    border-radius: 0.5rem;
-    -webkit-box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.75);
-    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.75);
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+.header__nav__wrapper {
+    text-align: center;
+    font-family: monospace;
+    color: #5f5f5f;
+    font-style: italic;
+    font-weight: bold;
+    border-bottom: 4px solid #afafaf;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 20px;
 }
 
-.user-table {
+.header__nav__title {
+    font-size: 24px;
+}
+.body__wrapper {
+    width: 100vw;
+}
+.body__userlist__wrapper {
+    margin: auto;
     width: 90%;
-    margin: 1rem auto 1rem auto;
-}
-.user-table__header__title {
-    padding-bottom: 1rem;
-    text-transform: uppercase;
-    font-family: Lato;
-    font-weight: 600;
-    text-align: left;
-    text-decoration: none;
-    font-size: 1.05rem;
-}
-.user-table__body__data {
-    padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-.user-table__header__title {
-    padding: 0 1rem 1rem 1rem;
+.body__userlist {
+    margin: auto;
+    font-family: Roboto, sans-serif;
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+    border-collapse: none;
 }
-.user-table__body__data {
-    font-family: Lato;
+.body__userlist__caption {
+    font-size: 2rem;
     font-weight: 400;
-    color: #303030;
-    font-size: 1rem;
+    margin-bottom: 20px;
 }
-.user-table__caption {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-family: Montserrat;
-    font-size: 1.25rem;
-    padding: 1rem 2rem 2rem 1rem;
+.body__userlist th {
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.body__userlist td {
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.body__userlist tr {
+    transition: 0.1s all ease-in-out;
+}
+
+.body__userlist tr:hover {
+    background: #dfdfdf;
+}
+
+.row-id {
+    width: 5%;
+    text-align: left;
+    padding-left: 10px;
+}
+.row-user {
+    width: 35%;
     text-align: left;
 }
-@media screen and (min-width: 720px) {
-    .full-width {
-        width: 90vw;
-        overflow: auto;
+.row-email {
+    width: 35%;
+    text-align: left;
+}
+.row-role {
+    width: 5%;
+    text-align: right;
+}
+.body__userlist td.row-action {
+    width: 20%;
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
+}
+.body__userlist__button-delete,
+.body__userlist__button-modify {
+    display: inline-block;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    font-weight: 400;
+    margin: 0 3px 0 3px;
+}
+.body__userlist__button-delete {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+.body__userlist__button-modify {
+    background-color: #d0d0d0;
+}
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 24px;
+}
+
+/* Ripple effect */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
     }
-    .user-table {
-        width: 95%;
-        margin: 1rem auto 1rem auto;
+    20% {
+        transform: scale(25, 25);
+        opacity: 1;
     }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+button:focus:not(:active)::after {
+    animation: ripple 2s ease-out;
 }
