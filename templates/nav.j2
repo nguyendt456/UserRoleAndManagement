@@ -3,9 +3,12 @@
     <div class="header__nav__title">
         URAM
     </div>
+    {% if body == 'dashboard' %}
     <div class="header__nav__logout-button">
         <a href="/logout">
             <button class="logout-button">Logout</button>
         </a>
     </div>
+    {% endif %}
+
 </div>

@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+html,
+body {
+    margin: 0;
+    background: #ee0979; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #ff6a00,
+        #ee0979
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #ff6a00,
+        #ee0979
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+.form-warpper {
+    background-color: #fdfdfd;
+    border: none;
+    width: 50vw;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.75);
+    padding: 20px 0 20px 0;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header {
+    text-align: center;
+    font-family: Montserrat;
+    margin: 0;
+}
+
+.login-form__input,
+.login-form__submit {
+    display: block;
+}
+
+.login-form__input {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    border: none;
+    width: 50%;
+    margin: 10px auto 10px auto;
+    height: 50px;
+}
+.login-form__submit {
+    width: 50%;
+    margin: auto;
+    height: 50px;
+    background: #69d2e7;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: Montserrat;
+    color: #ffff;
+    transition: transform 0.35s;
+}
+.login-form__submit:hover {
+    transform: scale(1.05);
+}
+
+.login-form__remeber {
+    font-weight: normal;
+    height: unset;
+    padding-bottom: 10px;
+}
+.login-form__submit,
+.login-form__remeber {
+    cursor: pointer;
+}
+.login-form__select {
+    display: block;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+        linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+.login-form__select:hover {
+    border-color: #888;
+}
+.form-error__items {
+    color: red;
+}
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+}
+.form-error {
+    width: 50%;
+    margin: 10px auto 10px auto;
+    border: 2px solid red;
+    border-radius: 0.25rem;
+    padding: 0 0.5rem 0 0.5rem;
+    color: red;
+}
+
+.form-error__items {
+    color: red;
+}
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+}
+.form-error {
+    width: 50%;
+    margin: 10px auto 10px auto;
+    border: 2px solid red;
+    border-radius: 0.25rem;
+    padding: 0 0.5rem 0 0.5rem;
+    color: red;
+}
+
+@media screen and (max-width: 480px) {
+    .form-warpper {
+        width: 85vw;
+    }
+    .login-form__input {
+        width: 90%;
+    }
+
+    .form-error {
+        width: 90%;
+    }
+}

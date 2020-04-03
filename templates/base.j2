@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'head.j2' %}
+    <body>
+        {% include 'nav.j2' %}
+        {% if body == 'dashboard' %}
+            {% include 'userlist.j2' %}
+        {% elif body == 'login'%}
+            {% include 'loginForm.j2' %}
+        {% elif body == 'register' %}
+            {% include 'registerForm.j2' %}
+        {% else %}
+            <h1>404 NOT FOUND</h1>
+        {% endif %}
+    </body>
+</html>
