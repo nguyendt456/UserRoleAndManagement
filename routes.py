@@ -29,7 +29,7 @@ def load_user(user_id):
 def index():
     if current_user.is_authenticated:
         print("ok")
-        return render_template("index.html", users = User.query.all())
+        return render_template("index.j2", users = User.query.all())
     elif (bool(request.form.to_dict()) == True):
         user = request.form
         userfromdatabase = User.query.filter_by(username = user['username']).first()
