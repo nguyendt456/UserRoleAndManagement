@@ -120,6 +120,18 @@ code {
     overflow: visible;
 }
 @media screen and (max-width: 480px) {
+    .header__nav__wrapper {
+        padding-left: 10px;
+    }
+    .header__nav__logout-button {
+        margin: auto 5px auto auto;
+    }
+    .header__nav__title {
+        font-size: 1rem;
+    }
+    .body__userlist__wrapper {
+        width: 100%;
+    }
     .row-id {
         width: 10%;
     }
