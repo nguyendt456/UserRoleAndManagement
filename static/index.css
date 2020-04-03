@@ -126,6 +126,9 @@ code {
     .header__nav__logout-button {
         margin: auto 5px auto auto;
     }
+    .logout-button {
+        font-size: 0.65rem;
+    }
     .header__nav__title {
         font-size: 1rem;
     }
