@@ -1,25 +1,53 @@
+/* overwrite default margin set by browser */
 body {
-    margin: 0; /* overwrite default margin set by browser */
+    margin: 0;
 }
 
+/* use system monospace font */
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
 .header__nav__wrapper {
-    text-align: center;
+    text-align: left;
     font-family: monospace;
-    color: #5f5f5f;
+    color: #fdfdfd;
     font-style: italic;
     font-weight: bold;
-    border-bottom: 4px solid #afafaf;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 20px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #24292e;
+}
+.logo > i {
+    font-size: 32px;
+}
+
+.header__nav__logout-button {
+    margin: auto 20px auto auto;
+}
+.logout-button {
+    min-width: 64px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 4px 4px 4px 4px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: rgb(0, 219, 219);
+    font-family: Roboto;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .header__nav__title {
     font-size: 24px;
+    margin-left: 10px;
 }
 .body__wrapper {
     width: 100vw;
@@ -36,11 +64,13 @@ code {
     width: 100%;
     white-space: nowrap;
     border-collapse: none;
+    font-size: 14px;
 }
 .body__userlist__caption {
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-bottom: 20px;
+    color: #a0a0a0;
 }
 .body__userlist th {
     font-weight: 500;
@@ -52,8 +82,8 @@ code {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .body__userlist tr {
@@ -92,11 +122,14 @@ code {
     display: inline-block;
     text-transform: uppercase;
     border: none;
-    border-radius: 6px;
-    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+    padding: 10px 10px 10px 10px;
     cursor: pointer;
-    font-weight: 400;
-    margin: 0 3px 0 3px;
+    font-weight: 500;
+    margin: 0 2px 0 2px;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    min-width: 64px;
 }
 .body__userlist__button-delete {
     background-color: rgb(255, 0, 0);
@@ -105,10 +138,12 @@ code {
 .body__userlist__button-modify {
     background-color: #d0d0d0;
 }
+
+/* Align icon with text */
 .material-icons {
     display: inline-flex;
     vertical-align: middle;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 /* Ripple effect */
