@@ -12,7 +12,7 @@ code {
     text-align: left;
     font-family: monospace;
     color: #fdfdfd;
-    font-style: italic;
+    font-style: normal;
     font-weight: bold;
     position: sticky;
     top: 0;
@@ -48,6 +48,8 @@ code {
 .header__nav__title {
     font-size: 24px;
     margin-left: 10px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 .body__wrapper {
     width: 100vw;
@@ -80,8 +82,8 @@ code {
 .body__userlist td {
     font-weight: 300;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: auto;
+    text-overflow: none;
     padding-top: 8px;
     padding-bottom: 8px;
 }
@@ -116,6 +118,20 @@ code {
     text-align: center;
     white-space: normal;
     overflow: visible;
+}
+@media screen and (max-width: 480px) {
+    .row-id {
+        width: 10%;
+    }
+    .row-user {
+        width: 30%;
+    }
+    .row-email {
+        width: 25%;
+    }
+    .row-role {
+        width: 15%;
+    }
 }
 .body__userlist__button-delete,
 .body__userlist__button-modify {
