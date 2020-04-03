@@ -34,7 +34,7 @@ code {
 }
 .logout-button {
     min-width: 64px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 15px 10px 15px;
     border-radius: 4px 4px 4px 4px;
     border: none;
     outline: none;
