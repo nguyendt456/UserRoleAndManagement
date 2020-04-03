@@ -1,8 +1,11 @@
 <div class="header__nav__wrapper">
-    <div class="logo"><i class="material-icons">code</i></div>
-    <div class="header__nav__title">
+    <a href="/" class="header__nav__link">
+        <div class="logo"><i class="material-icons">code</i></div>
+        <div class="header__nav__title">
         URAM
-    </div>
+        </div>
+    </a>
+    
     {% if body == 'dashboard' %}
     <div class="header__nav__logout-button">
         <a href="/logout">

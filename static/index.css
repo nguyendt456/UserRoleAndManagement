@@ -45,6 +45,12 @@ code {
     text-transform: uppercase;
 }
 
+.header__nav__link {
+    display: flex;
+    text-decoration: none;
+    color: #fdfdfd;
+    align-items: center;
+}
 .header__nav__title {
     font-size: 24px;
     margin-left: 10px;
