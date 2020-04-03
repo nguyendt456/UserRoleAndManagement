@@ -3,38 +3,99 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>User List</title>
-        <link href="/static/index.css" type="text/css" rel="stylesheet" />
+        <title>UserRoleAndManagement</title>
+
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link href="../static/index.css" rel="stylesheet" type="text/css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
     </head>
     <body>
-        <div class="full-width">
-            <table class="user-table">
-                <caption class="user-table__caption">
-                    User List
-                </caption>
-                <thead class="user-table__header">
-                    <tr class="user-table__header__row">
-                        <th class="user-table__header__title">User name</th>
-                        <th class="user-table__header__title">Email</th>
-                        <th class="user-table__header__title">Role</th>
-                    </tr>
-                </thead>
-                <tbody class="bodyuser-table__body">
-                    {% for user in users %}
-                    <tr class="user-table__body__row">
-                        <td class="user-table__body__data">
-                            {{user.username}}
-                        </td>
-                        <td class="user-table__body__data">
-                            {{user.email}}
-                        </td>
-                        <td class="user-table__body__data">
-                            {{user.role[0].name}}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="header__nav__wrapper">
+            <div class="logo"><i class="material-icons">code</i></div>
+            <div class="header__nav__title">
+                URAM
+            </div>
+            <div class="header__nav__logout-button">
+                <a href="/logout">
+                    <button class="logout-button">Logout</button>
+                </a>
+            </div>
+        </div>
+        <div class="body__wrapper">
+            <div class="body__userlist__wrapper">
+                <table class="body__userlist">
+                    <caption class="body__userlist__caption">
+                        User List
+                    </caption>
+                    <thead>
+                        <tr classname="body__userlist__head__row">
+                            <th class="body__userlist__head__row-1 row-id">
+                                ID
+                            </th>
+                            <th class="body__userlist__head__row-2 row-user">
+                                Username
+                            </th>
+                            <th class="body__userlist__head__row-3 row-email">
+                                Email
+                            </th>
+                            <th class="body__userlist__head__row-4 row-role">
+                                Role
+                            </th>
+                            <th class="body__userlist__head__row-5 row-action">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr classname="body__userlist__body__row">
+                            <td class="body__userlist__head__row-1 row-id">
+                                {{user.id}}
+                            </td>
+                            <td class="body__userlist__head__row-2 row-user">
+                                {{user.username}}
+                            </td>
+                            <td class="body__userlist__head__row-3 row-email">
+                                {{user.email}}
+                            </td>
+                            <td class="body__userlist__head__row-4 row-role">
+                                {{user.role[0].name}}
+                            </td>
+                            <td class="body__userlist__head__row-5 row-action">
+                                <button
+                                    class="body__userlist__button-delete ripple"
+                                >
+                                    <span class="material-icons">
+                                        delete
+                                    </span>
+                                    Delete
+                                </button>
+                                <button
+                                    class="body__userlist__button-modify ripple"
+                                >
+                                    <span class="material-icons">
+                                        edit
+                                    </span>
+                                    Modify
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </body>
 </html>
